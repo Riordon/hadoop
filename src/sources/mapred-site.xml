@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<property>
+		<name>mapreduce.jobhistory.address</name>
+		<value>dev225:10020</value>
+	</property>
+	<property>
+		<name>mapreduce.jobhistory.webapp.address</name>
+		<value>dev225:19888</value>
+	</property>
+	
+	<!--uber mode-->
+	<property>
+		<name>mapreduce.job.ubertask.enable</name>
+		<value>true</value>
+		<description>Whether to enable the small-jobs "ubertask" optimization,
+		which runs "sufficiently small" jobs sequentially within a single JVM.
+		"Small" is defined by the following maxmaps, maxreduces, and maxbytes
+		settings.  Users may override this value.
+		</description>
+	</property>
+	
+	<!--
+	<property>
+		<name>mapreduce.application.classpath</name>
+		<value>
+			$HADOOP_CONF_DIR,
+			$HADOOP_COMMON_HOME/share/hadoop/common/*,
+	        $HADOOP_COMMON_HOME/share/hadoop/common/lib/*,
+	        $HADOOP_HDFS_HOME/share/hadoop/hdfs/*,
+	        $HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,
+			$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,
+			$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*,
+			$HADOOP_YARN_HOME/share/hadoop/yarn/*,
+			$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*
+	    </value>
+	</property>
+	-->
+	
+	<property>
+		<name>mapreduce.reduce.shuffle.parallelcopies</name>
+		<value>10</value>
+	</property>
+
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+	
+	<!--压缩相关-->
+	<property>
+		<name>mapred.compress.map.output</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>mapred.map.output.compression.codec</name>
+		<value>com.hadoop.compression.lzo.LzoCodec</value>
+	</property>
+	<property>
+		<name>mapred.child.env</name>
+		<value>LD_LIBRARY_PATH=/opt/modules/lzo/lib</value>
+	</property>
+
+</configuration>

@@ -22,7 +22,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.luffy.hadoop.main</mainClass>
+							<mainClass>com.luffy.hadoop.ModuleMapReduce</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

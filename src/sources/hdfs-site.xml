@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<!-- local data dir config start. --> 
+	<property>
+		<name>dfs.namenode.name.dir</name>
+		<value>file:/data/hadoop-cluster/dfs/nn</value>
+	</property>
+	
+	<property>
+		<name>dfs.datanode.data.dir</name>
+		<value>file:/data/hadoop-cluster/dfs/dn</value>
+	</property>
+	<!-- local data dir config end... -->
+	
+	<property>
+		<name>dfs.replication</name>
+		<value>2</value>
+	</property>
+	
+	<property>
+		<name>dfs.webhdfs.enabled</name>
+		<value>true</value>
+	</property>
+	
+	<property>
+		<name>dfs.namenode.handler.count</name>
+		<value>50</value>
+	</property>
+
+	<property>
+		<name>dfs.permissions.superusergroup</name>
+		<value>ehp</value>
+	</property>
+
+	<property>
+      <name>dfs.datanode.max.xcievers</name>
+      <value>8192</value>
+	</property>
+ 
+	<property>
+		<name>dfs.block.size</name>
+		<value>134217728</value>
+	</property>
+
+	<property> 
+		<name>dfs.permissions</name> 
+		<value>false</value> 
+	</property> 
+	<property> 
+		<name>dfs.permissions.enabled</name> 
+		<value>false</value> 
+	</property> 
+	
+	<!-- HDFS HA config start. -->
+	<property>
+		<name>dfs.nameservices</name>
+		<value>testCluster</value>
+		<description>
+		Comma-separated list of nameservices.
+		</description>
+	</property>
+	
+	<property>
+		<name>dfs.ha.namenodes.testCluster</name>
+		<value>nn138,nn144</value>
+	</property>
+	
+	<property>
+		<name>dfs.namenode.shared.edits.dir</name>
+		<value>qjournal://dev138:8485;dev144:8485;dev225:8485/testCluster</value>
+	</property>
+	<property>     
+		<name>dfs.journalnode.edits.dir</name>     
+		<value>/data/hadoop-cluster/dfs/jn</value>     
+	</property> 
+
+	<property>
+		<name>dfs.namenode.rpc-address.testCluster.nn138</name>
+		<value>dev138:8020</value>
+	</property>
+		<property>
+		<name>dfs.namenode.rpc-address.testCluster.nn144</name>
+		<value>dev144:8020</value>
+	</property>
+	
+	<property>                                                                                                                                                                         
+		<name>dfs.namenode.http-address.testCluster.nn138</name>                                                                                                                             
+		<value>dev138:50070</value>                                                                                                                                        
+	</property>                                                                                                                                                                        
+	<property>                                                                                                                                                                         
+		<name>dfs.namenode.http-address.testCluster.nn144</name>                                                                                                                             
+		<value>dev144:50070</value>                                                                                                                                        
+	</property>  
+
+	<property> 
+		<name>dfs.namenode.servicerpc-address.testCluster.nn138</name> 
+		<value>dev138:53310</value> 
+	</property> 
+	<property> 
+		<name>dfs.namenode.servicerpc-address.testCluster.nn144</name> 
+		<value>dev144:53310</value> 
+	</property> 
+
+	<property>                                                                                                                                                                         
+		<name>dfs.client.failover.proxy.provider.testCluster</name>                                                                                                                        
+		<value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>                                                                                         
+	</property>  
+
+	<property>   
+		<name>dfs.ha.automatic-failover.enabled.testCluster</name>   
+		<value>true</value>   
+	</property>  
+
+	<property>                                                                                                                                                                         
+		<name>dfs.ha.fencing.methods</name>                                                                                                                                              
+		<value>sshfence</value>                                                                                                                                                          
+	</property>                                                                                                                                                                        																																						   
+	<property>                                                                                                                                                                         
+		<name>dfs.ha.fencing.ssh.private-key-files</name>                                                                                                                                
+		<value>/home/ehp/.ssh/id_rsa</value>                                                                                                                                     
+	</property>  
+	<property>                                                                                                                                                                         
+		<name>dfs.ha.fencing.ssh.connect-timeout</name>                                                                                                                                  
+		<value>30000</value>                                                                                                                                                             
+	</property>  
+	<!-- HDFS HA config end... -->
+		
+	<!--property>
+		<name>dfs.hosts.exclude</name>
+		<value>/opt/modules/hadoop-2.3.0-cdh5.0.2/etc/hadoop/exclude</value>
+	</property-->
+</configuration>
